@@ -45,8 +45,10 @@ async function fetchCookieApi() {
 
     };
 
-
 fetchCookieApi()
+
+
+
 
 const upgrades = [
     {
@@ -111,8 +113,27 @@ const upgrades = [
     }
 ]
 
-console.log(upgrades[0]);
 
+const container = document.getElementById('shopWindow');
+
+for (const item of upgrades) {
+    const div = document.createElement('div');
+
+    const button = document.createElement('button');
+    button.textContent = item.name;
+
+    const cost = document.createElement('p');
+    cost.textContent = `Cost: +${item.cost}`;
+
+    const increase = document.createElement('p');
+    increase.textContent = `Increase: +${item.increase} CPS`;
+
+    div.append(button, cost, increase);
+    container.appendChild(div);
+
+    // div.textContent = item.name;
+    // container.appendChild(div);
+}
 
 
 
