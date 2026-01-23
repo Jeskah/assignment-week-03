@@ -1,1 +1,7 @@
 # assignment-week-03
+
+This week has certainly challenged me, especially have little no zero knowledge in data handling and JavaScript. I have revised endlessly to get my head around concepts and I find each day becomes a little easier with understanding. I find it all very fascinating and making the links between how things operate is a hard thing to get my head around but it makes so much sense the more I learn. 
+
+Beginning to midway through the week I was worried I might not actually be able to continue because I just couldn't seem to grasp the concpets and retain the terminology. I felt quite under pressure but I knew what areas I could do with studying and it seems that now it's come to the end of the week, I do feel progress is slow, but I am able to understand better and know what to look for when I run into problems by identifying them using correct terms; google has been very helpful as has rewatching the demo videos. 
+
+Being visual and enjoying more front-end this has pushed me way out of my comfort zone and I may have underestimated to the intensity of the course. I do feel quite proud in a way however as coming from a design background only with no previous knowledge or understanding of most of JavaScript I feel considering I've picked it up quite quickly and confident with more practice and study I'll be writing code at lightning speed soon enough! I know it's going in sometimes quicker than I'm able to proccess it because I might get stuck on something in an evening, finally sleep and wake up with the answer! 

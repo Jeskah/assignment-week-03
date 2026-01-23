@@ -10,8 +10,8 @@ const cookieCountDisplay = document.getElementById("cookieCount");
 const cpsDisplay = document.getElementById("cps");
 
 
-
 cookieCountDisplay.innerText = cookieCount
+let clicksThisSecond = 0;
 
 image.addEventListener("click", function() {
         cookieCount++;
@@ -19,8 +19,6 @@ image.addEventListener("click", function() {
         console.log(cookieCount);
         clicksThisSecond++;
 });
-
-let clicksThisSecond = 0;
 
 
 setInterval(function() {
@@ -31,9 +29,6 @@ setInterval(function() {
 
 
 
-const shopDisplay = document.getElementById("shopContainer");
-
-
 async function fetchCookieApi() {
 
     const response = await fetch(`https://cookie-upgrade-api.vercel.app/api/upgrades`);
@@ -42,15 +37,81 @@ async function fetchCookieApi() {
 
     const data = await response.json();
     console.log(data);
-        // the "response object", more info, structured formet.
-    data.map((item) => {
-        console.log(item);
-    })
-        
+        // the "response object", more info, structured format, turned into objects.
+
+
+    // data.map((items) => {
+    //     console.log(items);   this isnt the right way
+
     };
 
 
 fetchCookieApi()
+
+const upgrades = [
+    {
+        "id": 1,
+        "name": "Auto-Clicker",
+        "cost": 100,
+        "increase": 1
+    },
+    {
+        "id": 2,
+        "name": "Enhanced Oven",
+        "cost": 500,
+        "increase": 5
+    },
+    {
+        "id": 3,
+        "name": "Cookie Farm",
+        "cost": 1000,
+        "increase": 10
+    },
+    {
+        "id": 4,
+        "name": "Robot Baker",
+        "cost": 2000,
+        "increase": 20
+    },
+    {
+        "id": 5,
+        "name": "Cookie Factory",
+        "cost": 5000,
+        "increase": 50
+    },
+    {
+        "id": 6,
+        "name": "Magic Flour",
+        "cost": 10000,
+        "increase": 100
+    },
+    {
+        "id": 7,
+        "name": "Time Machine",
+        "cost": 20000,
+        "increase": 200
+    },
+    {
+        "id": 8,
+        "name": "Quantum Oven",
+        "cost": 50000,
+        "increase": 500
+    },
+    {
+        "id": 9,
+        "name": "Alien Technology",
+        "cost": 100000,
+        "increase": 1000
+    },
+    {
+        "id": 10,
+        "name": "Interdimensional Baker",
+        "cost": 200000,
+        "increase": 2000
+    }
+]
+
+console.log(upgrades[0]);
 
 
 
