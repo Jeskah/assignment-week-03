@@ -9,6 +9,8 @@ const cookieCountDisplay = document.getElementById("cookieCount");
 
 const cpsDisplay = document.getElementById("cps");
 
+const resetAndBank = document.getElementById("resetAndBank");
+
 
 cookieCountDisplay.innerText = cookieCount
 let clicksThisSecond = 0;
@@ -33,30 +35,23 @@ async function fetchCookieApi() {
 
     const response = await fetch(`https://cookie-upgrade-api.vercel.app/api/upgrades`);
     
-        console.log(`getting reponse, making promosises`, response) // returns as a string - "promise, it's "return" after request was made to an API using "fetch" which gets the data like status and headers, body of response.
+        console.log(`getting reponse, making promosises`, response)
 
     const data = await response.json();
     console.log(data);
-        // the "response object", more info, structured format, turned into objects.
 
-
-    // data.map((items) => {
-    //     console.log(items);   this isnt the right way
-
-    };
+};
 
 fetchCookieApi()
 
 
-
-
 const upgrades = [
-    {
-        "id": 1,
-        "name": "Auto-Clicker",
-        "cost": 100,
-        "increase": 1
-    },
+    // {
+    //     "id": 1,
+    //     "name": "Auto-Clicker",
+    //     "cost": 1,
+    //     "increase": 1
+    // },
     {
         "id": 2,
         "name": "Enhanced Oven",
@@ -114,7 +109,7 @@ const upgrades = [
 ]
 
 
-const container = document.getElementById('shopWindow');
+const shop = document.getElementById('shopWindow');
 
 for (const item of upgrades) {
     const div = document.createElement('div');
@@ -123,18 +118,90 @@ for (const item of upgrades) {
     button.textContent = item.name;
 
     const cost = document.createElement('p');
-    cost.textContent = `Cost: +${item.cost}`;
+    cost.textContent = `Cost: -${item.cost}`;
 
     const increase = document.createElement('p');
     increase.textContent = `Increase: +${item.increase} CPS`;
 
     div.append(button, cost, increase);
-    container.appendChild(div);
+    shop.appendChild(div);
 
-    // div.textContent = item.name;
-    // container.appendChild(div);
+
+    button.addEventListener("click", () => { 
+if (cookieCount < item.cost) {
+    console.log("Out Of Cookies!:(")
+    return;
+}
+        cookieCount -= item.cost;
+        cps += item.increase;
+
+        cookieCountDisplay.innerText = cookieCount;
+        cpsDisplay.innerText = cps;
+        console.log(item.name);
+});
 }
 
 
+    function resetGame() {
+        cookieCount = 0;
+        cps = 0;
+        clicksThisSecond = 0;
+
+        cookieCountDisplay.innerText = cookieCount;
+        cpsDisplay.innerHTML = cps;
+    }
+
+    const resetBtn = document.createElement("button");
+    resetBtn.className = "reset-btn"
+
+    resetBtn.textContent = "Reset";
+    resetBtn.addEventListener('click', resetGame);
+
+    resetAndBank.appendChild(resetBtn);
 
 
+
+
+let bankCookies = 0;
+
+
+// display
+const bankGroup = document.createElement("div");
+bankGroup.className = "bank-group";
+
+const bankContainer = document.createElement("span");
+bankContainer.textContent = "Bank: ";
+
+const bankDisplay = document.createElement("span");
+bankDisplay.innerText = bankCookies;
+
+// logic
+function bankNewCookies() {
+    if (cookieCount === 0) return;
+
+    bankCookies += cookieCount;
+    cookieCount = 0;
+
+    cookieCountDisplay.innerText = cookieCount;
+    bankDisplay.innerText = bankCookies;
+}
+
+
+// bank button 
+const bankButton = document.createElement("button");
+bankButton.textContent = "BANK COOKIES";
+bankButton.className = "bank-btn"
+
+bankButton.addEventListener("click", bankNewCookies);
+
+
+
+bankContainer.appendChild(bankDisplay);
+bankGroup.appendChild(bankContainer);
+
+
+bankGroup.appendChild(bankButton);
+resetAndBank.appendChild(bankGroup);
+
+
+resetAndBank.appendChild(bankGroup)
