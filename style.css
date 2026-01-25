@@ -1,72 +1,124 @@
-.cookie-display {
-    position: relative;
-    display: flex;
+* {
+    margin: 0;
+    padding: 0;
 
-    padding: 30px;
 }
 
+.upgrades {
+    position: relative;
+    display: flex;
+    height: 100vh;
+}
+
+
 img {
-    height: 50vh;
+    display: flex;
+    height: 40vh;
     width: auto;
+    padding: 50px;
+/* 
+    transform: scale(1.5); */
+}
+
+img:hover {
+    cursor: crosshair;
 }
 
 .info {
     position: relative;
-    padding: 30px;
+    top: 80px;
+    height: 100px;
+    right: 30px;
+    text-align: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 
-    justify-items: center;
 }
+
 
 
 .shop-window {
+    overflow: scroll;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: center;
     padding: 50px;
-    height: 50vh;
+
+    background-color: rgb(169, 126, 107);
 }
 
-#shopWindow {
+.shop-window div  {
+    overflow-y: auto;
     display: flex;
-    justify-items: center;
-}
-
-.shop-window div {
-    padding: 10px;
-}
-
-
-#resetAndBank {
-    display: flex;
-    position: absolute;
     flex-direction: column;
     align-items: center;
-    top: 400px;
-    gap: 40px;
-    padding: 50px;
-    text-align: center;
+    justify-content: center;
+    padding: 15px;
+}
 
+.shop-window div p {
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 15px;
+}
+
+
+.shop-window button {
+    padding: 20px;
+
+    width: 90px;
+    font-size: 10px;
+
+}
+
+.shop-window p {
+    font-size: 10px;
+    padding: 3px;
+
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-align: center;
+}
+
+.options-container {
+    width: 100vw;
+    height: 70px;
+    display: flex;
+    position: absolute;
+    bottom: 0px;
+    background-color: rgb(104, 42, 35);
+}
+
+.reset-btn {
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    border-width: 0;
+    cursor: pointer;
 }
 
 .bank-group {
     display: flex;
-    flex-direction: column-reverse;
-    position: relative;
-    gap: 10px;
-    width: 90px;
+    flex-direction: column;
+    gap: 20px;
     padding: 30px;
 }
 
-.reset-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 90px;
-    padding: 10px;
+
+.bank-btn {
+    padding: 20px;
+    font-size: 12px;
+
 }
 
-
-
+.bank-btn:hover {
+    background-color: brown;
+    color: bisque;
+    cursor: pointer;
+}
 
 
 

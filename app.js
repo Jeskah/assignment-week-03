@@ -9,11 +9,10 @@ const cookieCountDisplay = document.getElementById("cookieCount");
 
 const cpsDisplay = document.getElementById("cps");
 
-const resetAndBank = document.getElementById("resetAndBank");
-
 
 cookieCountDisplay.innerText = cookieCount
 let clicksThisSecond = 0;
+
 
 image.addEventListener("click", function() {
         cookieCount++;
@@ -146,18 +145,22 @@ if (cookieCount < item.cost) {
         cookieCount = 0;
         cps = 0;
         clicksThisSecond = 0;
+        resetGame = 0;
 
         cookieCountDisplay.innerText = cookieCount;
         cpsDisplay.innerHTML = cps;
+        bankDisplay.innerHTML = resetGame;
+
+        console.log("Game Reset");
     }
 
+
+// reset button
     const resetBtn = document.createElement("button");
     resetBtn.className = "reset-btn"
-
     resetBtn.textContent = "Reset";
     resetBtn.addEventListener('click', resetGame);
-
-    resetAndBank.appendChild(resetBtn);
+    document.body.append(resetBtn);
 
 
 
@@ -193,6 +196,7 @@ bankButton.textContent = "BANK COOKIES";
 bankButton.className = "bank-btn"
 
 bankButton.addEventListener("click", bankNewCookies);
+bankBtn.appendChild(bankGroup)
 
 
 
@@ -201,7 +205,7 @@ bankGroup.appendChild(bankContainer);
 
 
 bankGroup.appendChild(bankButton);
-resetAndBank.appendChild(bankGroup);
 
-
-resetAndBank.appendChild(bankGroup)
+// options container bottom
+const options = document.getElementById("optionsContainer");
+optionsContainer.appendChild(resetBtn);
