@@ -5,6 +5,7 @@
 }
 
 .upgrades {
+    display: flex;
     position: relative;
     display: flex;
     height: 100vh;
@@ -15,7 +16,7 @@ img {
     display: flex;
     height: 40vh;
     width: auto;
-    padding: 50px;
+    padding: 30px;
 /* 
     transform: scale(1.5); */
 }
@@ -24,24 +25,29 @@ img:hover {
     cursor: crosshair;
 }
 
-.info {
+.counter {
     position: relative;
-    top: 80px;
-    height: 100px;
-    right: 30px;
-    text-align: center;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-
 }
 
-
+.counter {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+    padding-right: 50px;
+}
 
 .shop-window {
+
     overflow: scroll;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    padding: 50px;
+    padding: 40px;
+    position: relative;
 
     background-color: rgb(169, 126, 107);
 }
@@ -52,66 +58,73 @@ img:hover {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 15px;
+    padding: 20px;
+    gap: 5px;
 }
-
-.shop-window div p {
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding-top: 15px;
-}
-
 
 .shop-window button {
-    padding: 20px;
-
-    width: 90px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    width: 100px;
+    height: 50px;
     font-size: 10px;
+    background-color: transparent;
+    border-style: solid;
+    cursor: pointer;
 
+}
+
+.shop-window button:hover {
+    background-color: bisque;
 }
 
 .shop-window p {
-    font-size: 10px;
-    padding: 3px;
-
+    font-size: 12px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     text-align: center;
 }
 
 .options-container {
-    width: 100vw;
-    height: 70px;
     display: flex;
+
+    width: 100vw;
+    height: 80px;
     position: absolute;
     bottom: 0px;
     background-color: rgb(104, 42, 35);
 }
+
+.options-container {
+    align-items: center;
+    justify-content: space-evenly;
+}
+
 
 .reset-btn {
     margin: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 150px;
+    width: 100px;
+    height: 30px;
     border-width: 0;
     cursor: pointer;
 }
 
+
 .bank-group {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 30px;
+
+    font-size: 20px;
+
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+        color: bisque;
+        align-items: center;
+
 }
 
-
 .bank-btn {
-    padding: 20px;
-    font-size: 12px;
-
+    height: 100px;
+    width: 100px;
 }
 
 .bank-btn:hover {
@@ -119,9 +132,6 @@ img:hover {
     color: bisque;
     cursor: pointer;
 }
-
-
-
 
 
 

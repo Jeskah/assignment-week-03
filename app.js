@@ -1,25 +1,33 @@
 console.log("Cookie Counter Assignment Week 03")
 
-let cookieCount = 0;
+let cookieCount = Number(localStorage.getItem("cookie count")) || 0;
+
+let bankCookies = Number(localStorage.getItem("banked cookies")) || 0;
+
 let cps = 0;
 
 const image = document.querySelector("img");
 
 const cookieCountDisplay = document.getElementById("cookieCount");
 
+cookieCountDisplay.innerText = cookieCount;
+
 const cpsDisplay = document.getElementById("cps");
 
+const bankBtn = document.getElementById("bankBtn");
 
-cookieCountDisplay.innerText = cookieCount
 let clicksThisSecond = 0;
 
 
 image.addEventListener("click", function() {
         cookieCount++;
-        cookieCountDisplay.innerText = cookieCount
+        cookieCountDisplay.innerText = cookieCount;
         console.log(cookieCount);
-        clicksThisSecond++;
+        clicksThisSecond++; // want to calulate the highest cps over a lifetime and store it.
+
+        localStorage.setItem("cookie count", cookieCount);
 });
+
 
 
 setInterval(function() {
@@ -140,16 +148,19 @@ if (cookieCount < item.cost) {
 });
 }
 
-
+// resetting all values in dom and local storage
     function resetGame() {
         cookieCount = 0;
         cps = 0;
         clicksThisSecond = 0;
-        resetGame = 0;
+        bankCookies = 0;
 
-        cookieCountDisplay.innerText = cookieCount;
-        cpsDisplay.innerHTML = cps;
-        bankDisplay.innerHTML = resetGame;
+        cookieCountDisplay.innerText = 0;
+        cpsDisplay.innerText = 0;
+        bankDisplay.innerText = 0;
+
+        localStorage.setItem("cookie count", 0);
+        localStorage.setItem('banked cookies', 0);
 
         console.log("Game Reset");
     }
@@ -159,13 +170,12 @@ if (cookieCount < item.cost) {
     const resetBtn = document.createElement("button");
     resetBtn.className = "reset-btn"
     resetBtn.textContent = "Reset";
-    resetBtn.addEventListener('click', resetGame);
-    document.body.append(resetBtn);
+    resetBtn.addEventListener('click', resetGame) 
 
 
 
 
-let bankCookies = 0;
+// let bankCookies = 0;
 
 
 // display
@@ -176,17 +186,22 @@ const bankContainer = document.createElement("span");
 bankContainer.textContent = "Bank: ";
 
 const bankDisplay = document.createElement("span");
+
 bankDisplay.innerText = bankCookies;
 
-// logic
+// bank cookies
 function bankNewCookies() {
     if (cookieCount === 0) return;
+        console.log("Banked!");
 
     bankCookies += cookieCount;
     cookieCount = 0;
 
     cookieCountDisplay.innerText = cookieCount;
     bankDisplay.innerText = bankCookies;
+
+    localStorage.setItem("banked cookies", bankCookies);
+    localStorage.setItem("cookie count", cookieCount);
 }
 
 
@@ -194,18 +209,18 @@ function bankNewCookies() {
 const bankButton = document.createElement("button");
 bankButton.textContent = "BANK COOKIES";
 bankButton.className = "bank-btn"
+bankBtn.appendChild(bankButton)
+
 
 bankButton.addEventListener("click", bankNewCookies);
-bankBtn.appendChild(bankGroup)
 
 
 
 bankContainer.appendChild(bankDisplay);
 bankGroup.appendChild(bankContainer);
-
-
-bankGroup.appendChild(bankButton);
+optionsContainer.appendChild(bankGroup);
 
 // options container bottom
-const options = document.getElementById("optionsContainer");
+// const options = document.getElementById("optionsContainer");
+// reset button
 optionsContainer.appendChild(resetBtn);
