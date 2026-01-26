@@ -4,6 +4,14 @@
 
 }
 
+div.counter {
+    width: 100px;
+}
+
+/* body {
+    background-color: black;
+} */
+
 .upgrades {
     display: flex;
     position: relative;
@@ -16,7 +24,7 @@ img {
     display: flex;
     height: 40vh;
     width: auto;
-    padding: 30px;
+    padding: 50px;
 /* 
     transform: scale(1.5); */
 }
@@ -25,7 +33,18 @@ img:hover {
     cursor: crosshair;
 }
 
-.counter {
+#cookieCount, #cps {
+    color: rgb(210, 30, 30);
+    font-size: 19px;
+}
+
+.counter span  {
+    display: flex;
+    font-size: 20px;
+    
+}
+
+.counter span {
     position: relative;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
@@ -33,11 +52,12 @@ img:hover {
 .counter {
     display: flex;
     flex-direction: column;
-    gap: 20px;
     align-items: center;
     text-align: center;
     padding: 30px;
-    padding-right: 50px;
+    padding-top: 50px;
+    gap: 20px;
+    padding-right: 100px;
 }
 
 .shop-window {
@@ -49,7 +69,7 @@ img:hover {
     padding: 40px;
     position: relative;
 
-    background-color: rgb(169, 126, 107);
+    background-color: rgb(231, 194, 179);
 }
 
 .shop-window div  {
@@ -64,9 +84,9 @@ img:hover {
 
 .shop-window button {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    width: 100px;
+    width: 120px;
     height: 50px;
-    font-size: 10px;
+    font-size: 13px;
     background-color: transparent;
     border-style: solid;
     cursor: pointer;
@@ -74,11 +94,11 @@ img:hover {
 }
 
 .shop-window button:hover {
-    background-color: bisque;
+    background-color: rgb(211, 114, 58);
 }
 
 .shop-window p {
-    font-size: 12px;
+    font-size: 13px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     text-align: center;
 }
@@ -128,13 +148,15 @@ img:hover {
 }
 
 .bank-btn:hover {
-    background-color: brown;
+    background-color: rgb(104, 42, 35);
     color: bisque;
     cursor: pointer;
 }
 
 
-
+@media (width < 840px) {
+        
+}
 
 
 /* @media (width < 425.1px) {

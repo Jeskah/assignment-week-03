@@ -4,7 +4,12 @@ let cookieCount = Number(localStorage.getItem("cookie count")) || 0;
 
 let bankCookies = Number(localStorage.getItem("banked cookies")) || 0;
 
-let cps = 0;
+// let cps = 0;
+
+
+const cpsBest = document.getElementById("cpsBest");
+let cpsRecord = (localStorage.getItem("Highest CPS"));
+
 
 const image = document.querySelector("img");
 
@@ -29,14 +34,21 @@ image.addEventListener("click", function() {
 });
 
 
-
-setInterval(function() {
+// clicks per second // needed to be called instantly, not 1s
+function cpsLoad() {
     cps = clicksThisSecond;
     cpsDisplay.innerText = cps;
-    clicksThisSecond = 0
-}, 1000); 
+    
+    if (cps > cpsRecord) {
+        cpsRecord = cps;
+        localStorage.setItem("CPS BEST", cpsRecord);
+    }
+    clicksThisSecond = 0;
+} 
+cpsLoad()
+setInterval(cpsLoad,1000);
 
-
+// optionsContainer.appendChild(cps);
 
 async function fetchCookieApi() {
 
@@ -53,17 +65,17 @@ fetchCookieApi()
 
 
 const upgrades = [
-    // {
-    //     "id": 1,
-    //     "name": "Auto-Clicker",
-    //     "cost": 1,
-    //     "increase": 1
-    // },
+    {
+        "id": 1,
+        "name": "Auto-Clicker",
+        "cost": 3,
+        "increase": 6
+    },
     {
         "id": 2,
         "name": "Enhanced Oven",
-        "cost": 500,
-        "increase": 5
+        "cost": 5,
+        "increase": 10
     },
     {
         "id": 3,
@@ -183,7 +195,7 @@ const bankGroup = document.createElement("div");
 bankGroup.className = "bank-group";
 
 const bankContainer = document.createElement("span");
-bankContainer.textContent = "Bank: ";
+bankContainer.textContent = "Cookie Jar : ";
 
 const bankDisplay = document.createElement("span");
 
@@ -214,13 +226,8 @@ bankBtn.appendChild(bankButton)
 
 bankButton.addEventListener("click", bankNewCookies);
 
-
-
 bankContainer.appendChild(bankDisplay);
 bankGroup.appendChild(bankContainer);
 optionsContainer.appendChild(bankGroup);
 
-// options container bottom
-// const options = document.getElementById("optionsContainer");
-// reset button
 optionsContainer.appendChild(resetBtn);
