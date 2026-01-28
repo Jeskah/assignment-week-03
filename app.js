@@ -178,13 +178,12 @@ if (cookieCount < item.cost) {
     }
 
 
+
 // reset button
     const resetBtn = document.createElement("button");
     resetBtn.className = "reset-btn"
     resetBtn.textContent = "Reset";
     resetBtn.addEventListener('click', resetGame) 
-
-
 
 
 // let bankCookies = 0;
@@ -231,3 +230,5 @@ bankGroup.appendChild(bankContainer);
 optionsContainer.appendChild(bankGroup);
 
 optionsContainer.appendChild(resetBtn);
+
+//_____calm_____peeved_____hurt_____angry____seething____over baked____burnt
