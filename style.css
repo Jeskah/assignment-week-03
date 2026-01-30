@@ -153,6 +153,10 @@ img:hover {
     cursor: pointer;
 }
 
+.cps-record {
+    display: flex;
+    position: absolute;
+}
 
 @media (width < 840px) {
         

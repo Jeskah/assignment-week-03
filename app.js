@@ -4,16 +4,14 @@ let cookieCount = Number(localStorage.getItem("cookie count")) || 0;
 
 let bankCookies = Number(localStorage.getItem("banked cookies")) || 0;
 
-// let cps = 0;
-
-
-const cpsBest = document.getElementById("cpsBest");
-let cpsRecord = (localStorage.getItem("Highest CPS"));
-
+let cpsRecord = Number(localStorage.getItem("HIGHEST CPS")) || 0;
 
 const image = document.querySelector("img");
 
 const cookieCountDisplay = document.getElementById("cookieCount");
+
+const cpsBest = document.getElementById("cpsBest");
+cpsBest.innerText = cpsRecord;
 
 cookieCountDisplay.innerText = cookieCount;
 
@@ -21,7 +19,7 @@ const cpsDisplay = document.getElementById("cps");
 
 const bankBtn = document.getElementById("bankBtn");
 
-let clicksThisSecond = 0;
+const optionsContainer = document.getElementById("optionsContainer")
 
 
 image.addEventListener("click", function() {
@@ -35,20 +33,41 @@ image.addEventListener("click", function() {
 
 
 // clicks per second // needed to be called instantly, not 1s
+
+let totalCps = 0;
+let cps = 0;
+let clicksThisSecond = 0;
+let sessionBestCps = cpsRecord;
+    cpsBest.innerText = sessionBestCps
+
 function cpsLoad() {
-    cps = clicksThisSecond;
-    cpsDisplay.innerText = cps;
+    totalCps = clicksThisSecond + cps;
+    cpsDisplay.innerText = totalCps;
     
-    if (cps > cpsRecord) {
-        cpsRecord = cps;
-        localStorage.setItem("CPS BEST", cpsRecord);
+    if (totalCps > sessionBestCps) {
+        sessionBestCps = totalCps;
+        cpsBest.innerText = sessionBestCps;
     }
+
+    if (sessionBestCps > cpsRecord) {
+        cpsRecord = sessionBestCps;
+        localStorage.setItem("HIGHEST CPS", cpsRecord);
+    }
+
     clicksThisSecond = 0;
 } 
 cpsLoad()
 setInterval(cpsLoad,1000);
 
-// optionsContainer.appendChild(cps);
+const clearCpsBest = document.getElementById("clearCpsBest");
+
+clearCpsBest.addEventListener("click", () => {
+    sessionBestCps = 0;
+    cpsBest.innerText = 0;
+
+    localStorage.setItem("HIGHEST CPS", 0)
+    console.log("CPS RECORD CLEARED")
+});
 
 async function fetchCookieApi() {
 
@@ -131,8 +150,8 @@ const upgrades = [
 const shop = document.getElementById('shopWindow');
 
 for (const item of upgrades) {
-    const div = document.createElement('div');
 
+    const div = document.createElement('div');
     const button = document.createElement('button');
     button.textContent = item.name;
 
@@ -145,20 +164,18 @@ for (const item of upgrades) {
     div.append(button, cost, increase);
     shop.appendChild(div);
 
-
-    button.addEventListener("click", () => { 
-if (cookieCount < item.cost) {
+button.addEventListener("click", () => { 
+    if (cookieCount < item.cost) {
     console.log("Out Of Cookies!:(")
     return;
 }
+
         cookieCount -= item.cost;
         cps += item.increase;
-
         cookieCountDisplay.innerText = cookieCount;
-        cpsDisplay.innerText = cps;
-        console.log(item.name);
-});
+    });
 }
+
 
 // resetting all values in dom and local storage
     function resetGame() {
@@ -168,7 +185,7 @@ if (cookieCount < item.cost) {
         bankCookies = 0;
 
         cookieCountDisplay.innerText = 0;
-        cpsDisplay.innerText = 0;
+        cpsDisplay.innerText = 0; 
         bankDisplay.innerText = 0;
 
         localStorage.setItem("cookie count", 0);
@@ -180,7 +197,7 @@ if (cookieCount < item.cost) {
 
 
 // reset button
-    const resetBtn = document.createElement("button");
+const resetBtn = document.createElement("button");
     resetBtn.className = "reset-btn"
     resetBtn.textContent = "Reset";
     resetBtn.addEventListener('click', resetGame) 
@@ -230,5 +247,3 @@ bankGroup.appendChild(bankContainer);
 optionsContainer.appendChild(bankGroup);
 
 optionsContainer.appendChild(resetBtn);
-
-//_____calm_____peeved_____hurt_____angry____seething____over baked____burnt
